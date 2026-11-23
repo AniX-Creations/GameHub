@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowRight, Gamepad2, Sparkles, Telescope } from "lucide-react";
+import { ArrowRight, Telescope } from "lucide-react";
 import SnakeGame from "./games/snake/SnakeGame";
 import IllusionGame from "./games/illusion/IllusionGame";
 
