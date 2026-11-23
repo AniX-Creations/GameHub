@@ -1,18 +1,35 @@
 # AniX Creations GameHub
 
-A browser-game collection by AniX Creations.
+A browser-game collection by AniX Creations, rebuilding the original C/C++ projects as responsive web applications.
 
-## Current build
+## Current games
 
-**Snake Challenge** is the first playable game. It is built with React, TypeScript, Vite, and CSS. It supports:
-
+### 1. Snake Challenge
 - Modern and Classic visual themes
-- Three difficulty levels and three maze layouts based on the original college-era SNAKE.C source
+- Three difficulty levels and three maze layouts based on the original `SNAKE.C`
 - Keyboard controls (arrow keys and WASD), pause/resume, and touch controls
-- Score and locally saved personal best
-- Responsive desktop and mobile layout
+- Scoring and locally saved personal best
 
-The original source files are preserved separately in [AshishDesk/Personal-Projects](https://github.com/AshishDesk/Personal-Projects/tree/main/College-Projects). This repository contains the modern browser recreation, not a replacement for those originals.
+### 2. The Letter Illusion
+- Recreates the original number-to-letter magic trick from `ILLUSION.C`
+- Guided instructions, a 1–99 number/letter board, and a reveal moment
+- Modern and Classic visual themes
+- Responsive layout
+
+The trick follows the original arithmetic: choose a two-digit number, add its digits, then subtract that sum from the original number. The result is a multiple of nine. The program places the same hidden letter at each multiple-of-nine position on the board.
+
+## Planned game
+
+### 3. Solar System Explorer
+A recreation of `OSS.CPP`, including an animated solar-system view, planet details, and the original ten-question quiz. The original quiz content will be reviewed separately so historical inaccuracies are not silently carried forward.
+
+## Technology
+
+- React + TypeScript
+- Vite
+- HTML5 and CSS
+- Browser local storage for local preferences and scores
+- Three.js is planned for the Solar System experience
 
 ## Run locally
 
@@ -28,9 +45,6 @@ npm run build
 npm run preview
 ```
 
-## Planned games
+## Original source preservation
 
-- Number Illusion
-- Solar System Explorer
-
-The next two games will be added after the Snake game has been reviewed and tested.
+The original C/C++ source files remain preserved separately in [AshishDesk/Personal-Projects](https://github.com/AshishDesk/Personal-Projects/tree/main/College-Projects). This repository contains the modern browser recreations and does not replace those original files.
