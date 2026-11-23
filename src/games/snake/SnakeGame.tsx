@@ -148,7 +148,7 @@ export default function SnakeGame({ onBack }: { onBack: () => void }) {
         <button className="brand brand-button" onClick={onBack} aria-label="Back to GameHub">
           <span className="brand-mark">A<span>X</span></span>
           <span><strong>AniX</strong><small>CREATIONS · GAMEHUB</small></span>
-        </a>
+        </button>
         <div className="top-actions">
           <span className="edition-label">BROWSER ARCADE</span>
           <div className="theme-switch" role="group" aria-label="Choose visual theme">
