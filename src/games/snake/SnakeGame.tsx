@@ -94,7 +94,8 @@ export default function SnakeGame() {
       const next = keyMap[event.key];
       if (next) {
         event.preventDefault();
-        if (status === "ready" || status === "over" || status === "won") setStatus("playing");
+        if (status === "over" || status === "won") resetGame(true);
+        else if (status === "ready") setStatus("playing");
         changeDirection(next);
       }
       if (event.code === "Space") {
