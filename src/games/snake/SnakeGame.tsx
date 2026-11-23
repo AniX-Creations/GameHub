@@ -28,7 +28,7 @@ const initialBest = () => {
   catch { return 0; }
 };
 
-export default function SnakeGame() {
+export default function SnakeGame({ onBack }: { onBack: () => void }) {
   const [theme, setTheme] = useState<Theme>(initialTheme);
   const [level, setLevel] = useState(1);
   const [maze, setMaze] = useState<MazeId>(1);
@@ -145,7 +145,7 @@ export default function SnakeGame() {
   return (
     <main className={`app-shell theme-${theme}`}>
       <header className="topbar">
-        <a className="brand" href="./" aria-label="AniX Creations GameHub">
+        <button className="brand brand-button" onClick={onBack} aria-label="Back to GameHub">
           <span className="brand-mark">A<span>X</span></span>
           <span><strong>AniX</strong><small>CREATIONS · GAMEHUB</small></span>
         </a>
