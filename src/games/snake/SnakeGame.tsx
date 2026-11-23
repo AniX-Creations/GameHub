@@ -106,7 +106,7 @@ export default function SnakeGame() {
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [changeDirection, status]);
+  }, [changeDirection, resetGame, status]);
 
   const start = () => {
     if (status === "over" || status === "won") resetGame(true);
