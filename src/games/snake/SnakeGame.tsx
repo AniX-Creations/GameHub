@@ -73,7 +73,7 @@ export default function SnakeGame() {
         setScore(nextScore);
         if (nextScore > best) setBest(nextScore);
         setFood(getRandomFood(result.snake, obstacles));
-        if (result.snake.length >= BOARD_WIDTH * BOARD_HEIGHT - obstacles.size) setStatus("won");
+        if (result.snake.length >= 100) setStatus("won");
       }
     }, speed);
     return () => window.clearInterval(timer);
