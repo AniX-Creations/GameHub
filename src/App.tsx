@@ -2,14 +2,16 @@ import { useState } from "react";
 import { ArrowRight, Telescope } from "lucide-react";
 import SnakeGame from "./games/snake/SnakeGame";
 import IllusionGame from "./games/illusion/IllusionGame";
+import SolarSystemExplorer from "./games/solar/SolarSystemExplorer";
 
-type Game = "snake" | "illusion" | null;
+type Game = "snake" | "illusion" | "solar" | null;
 
 export default function App() {
   const [selectedGame, setSelectedGame] = useState<Game>(null);
 
   if (selectedGame === "snake") return <SnakeGame onBack={() => setSelectedGame(null)} />;
   if (selectedGame === "illusion") return <IllusionGame onBack={() => setSelectedGame(null)} />;
+  if (selectedGame === "solar") return <SolarSystemExplorer onBack={() => setSelectedGame(null)} />;
 
   return (
     <main className="app-shell hub-shell">
@@ -37,9 +39,9 @@ export default function App() {
             <div className="hub-card-art illusion-art"><div className="mini-orbit"><i/><i/><i/><b>?</b></div><span className="mini-stars">✦　·　✧</span></div>
             <div className="hub-card-copy"><span className="step-tag">GAME 02 · MIND MAGIC</span><h2>The Letter Illusion</h2><p>Pick a number, follow the simple maths, and let the program reveal your letter.</p><span className="hub-card-link">TRY THE MAGIC <ArrowRight size={15}/></span></div>
           </button>
-          <div className="hub-game-card upcoming-card">
+          <button className="hub-game-card upcoming-card" onClick={() => setSelectedGame("solar")}>
             <div className="hub-card-art solar-art"><Telescope size={45}/><span>COMING NEXT</span></div>
-            <div className="hub-card-copy"><span className="step-tag">GAME 03 · EXPLORATION</span><h2>Solar System Explorer</h2><p>Explore the planets, learn their details, and take the original quiz.</p><span className="hub-card-link muted-link">IN DEVELOPMENT</span></div>
+            <div className="hub-card-copy"><span className="step-tag">GAME 03 · EXPLORATION</span><h2>Solar System Explorer</h2><p>Explore the planets, learn their details, and take the original quiz.</p><span className="hub-card-link">EXPLORE SOLAR SYSTEM <ArrowRight size={15}/></span></div></button>
           </div>
         </div>
       </section>
