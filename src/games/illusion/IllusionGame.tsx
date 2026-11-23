@@ -80,7 +80,7 @@ export default function IllusionGame({ onBack }: { onBack: () => void }) {
         {stage === "table" && <div className="letter-board-wrap">
           <div className="letter-board-intro"><span className="step-tag">02 / FIND YOUR LETTER</span><h2>Find your answer below.</h2><p>Look up the number you got after subtracting. Remember the letter next to it. Don't click the reveal until you're ready.</p></div>
           <div className="letter-grid" aria-label="Number and letter grid">
-            {symbols.map(item => <div className={item.number % 9 === 0 ? "letter-tile special-tile" : "letter-tile"} key={item.number}><span>{item.number}</span><b>{item.letter}</b></div>)}
+            {symbols.map(item => <div className="letter-tile" key={item.number}><span>{item.number}</span><b>{item.letter}</b></div>)}
           </div>
           <div className="letter-board-actions"><button className="secondary-button" onClick={onBack}><ArrowLeft size={15}/> Game library</button><button className="primary-button magic-primary" onClick={() => setStage("reveal")}><Eye size={16}/> Reveal my letter</button></div>
         </div>}
