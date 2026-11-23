@@ -26,7 +26,7 @@ export default function App() {
         <div className="eyebrow"><span className="eyebrow-dot"/> ANI X CREATIONS <span className="eyebrow-divider">/</span> EST. IN CURIOSITY</div>
         <h1>Small games.<br/><span>Big memories.</span></h1>
         <p>A collection of classic ideas from the early days of coding, brought back to life for the modern browser.</p>
-        <div className="hub-stats"><span><b>02</b> GAMES READY</span><span><b>02</b> THEMES EACH</span><span><b>01</b> CREATIVE SPIRIT</span></div>
+        <div className="hub-stats"><span><b>03</b> GAMES READY</span><span><b>02</b> THEMES EACH</span><span><b>01</b> CREATIVE SPIRIT</span></div>
       </section>
       <section className="hub-games">
         <div className="hub-section-title"><span>THE GAME COLLECTION</span><span>SELECT A GAME <ArrowRight size={13}/></span></div>
@@ -45,7 +45,7 @@ export default function App() {
           </div>
         </div>
       </section>
-      <footer className="site-footer"><span>© 2026 ANIX CREATIONS</span><span>MADE TO PLAY. BUILT TO LAST.</span><span>GAMEHUB <b>·</b> 02 / 03</span></footer>
+      <footer className="site-footer"><span>© 2026 ANIX CREATIONS</span><span>MADE TO PLAY. BUILT TO LAST.</span><span>GAMEHUB <b>·</b> 03 / 03</span></footer>
     </main>
   );
 }
