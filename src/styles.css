@@ -401,3 +401,21 @@ button.hub-game-card:hover{transform:translateY(-3px);border-color:var(--accent)
 .ttt-winning-line.winning-line-o line{stroke:#8fd8ff;filter:drop-shadow(0 0 5px rgba(143,216,255,.9)) drop-shadow(0 0 12px rgba(143,216,255,.55))}
 @keyframes ttt-draw-winning-line{to{stroke-dashoffset:0}}
 @media(prefers-reduced-motion:reduce){.ttt-winning-line line{animation:none;stroke-dashoffset:0}}
+
+
+/* Keep the Tic Tac Toe grid perfectly even in every viewport */
+.ttt-board{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  grid-template-rows:repeat(3,minmax(0,1fr));
+  aspect-ratio:1 / 1;
+  min-height:0;
+  align-content:stretch;
+}
+.ttt-cell{
+  width:100%;
+  height:100%;
+  min-width:0;
+  min-height:0;
+  aspect-ratio:1 / 1;
+}
