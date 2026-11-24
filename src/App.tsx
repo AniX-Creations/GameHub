@@ -3,8 +3,9 @@ import { ArrowRight, Telescope } from "lucide-react";
 import SnakeGame from "./games/snake/SnakeGame";
 import IllusionGame from "./games/illusion/IllusionGame";
 import SolarSystemExplorer from "./games/solar/SolarSystemExplorer";
+import TicTacToe from "./games/tictactoe/TicTacToe";
 
-type Game = "snake" | "illusion" | "solar" | null;
+type Game = "snake" | "illusion" | "solar" | "tictactoe" | null;
 
 export default function App() {
   const [selectedGame, setSelectedGame] = useState<Game>(null);
@@ -12,6 +13,7 @@ export default function App() {
   if (selectedGame === "snake") return <SnakeGame onBack={() => setSelectedGame(null)} />;
   if (selectedGame === "illusion") return <IllusionGame onBack={() => setSelectedGame(null)} />;
   if (selectedGame === "solar") return <SolarSystemExplorer onBack={() => setSelectedGame(null)} />;
+  if (selectedGame === "tictactoe") return <TicTacToe onBack={() => setSelectedGame(null)} />;
 
   return (
     <main className="app-shell hub-shell">
@@ -28,7 +30,7 @@ export default function App() {
         <h1>Small games.<br /><span>Big memories.</span></h1>
         <p>A collection of classic ideas from the early days of coding, brought back to life for the modern browser.</p>
         <div className="hub-stats">
-          <span><b>03</b> GAMES READY</span>
+          <span><b>04</b> GAMES READY</span>
           <span><b>02</b> THEMES EACH</span>
           <span><b>01</b> CREATIVE SPIRIT</span>
         </div>
@@ -40,7 +42,7 @@ export default function App() {
           <span>SELECT A GAME <ArrowRight size={13} /></span>
         </div>
 
-        <div className="hub-game-grid">
+        <div className="hub-game-grid hub-game-grid-four">
           <button className="hub-game-card snake-hub-card" onClick={() => setSelectedGame("snake")}>
             <div className="hub-card-art snake-art">
               <div className="mini-snake"><i /><i /><i /><i /><i /></div>
@@ -85,7 +87,7 @@ export default function App() {
       <footer className="site-footer">
         <span>© 2026 ANIX CREATIONS</span>
         <span>MADE TO PLAY. BUILT TO LAST.</span>
-        <span>GAMEHUB <b>·</b> 03 / 03</span>
+        <span>GAMEHUB <b>·</b> 04 / 04</span>
       </footer>
     </main>
   );
