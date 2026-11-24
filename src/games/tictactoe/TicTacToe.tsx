@@ -111,7 +111,12 @@ export default function TicTacToe({ onBack }: { onBack: () => void }) {
       if (selected === index) { setSelected(null); return; }
       if (board[index] === null) { moveAdvanced(selected, index); return; }
     }
-    if (board[index] === turn) setSelected(index);
+    if (advancedPlaced[turn] < 3 && board[index] === null) {
+      const next = [...board]; next[index] = turn;
+      setBoard(next); setMoves(value => value + 1); setTurn(turn === "X" ? "O" : "X");
+      return;
+    }
+    if (advancedPlaced[turn] === 3 && board[index] === turn) setSelected(index);
   };
 
   const resetToSetup = () => { setPhase("setup"); setBoard(Array(9).fill(null)); setSelected(null); setMoves(0); setMessage(""); };
