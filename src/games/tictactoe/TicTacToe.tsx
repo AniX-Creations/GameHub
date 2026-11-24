@@ -9,9 +9,14 @@ type Phase = "setup" | "playing" | "finished";
 
 const WIN_LINES = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
 
-function getWinner(board: Cell[]): Player | null {
-  for (const [a,b,c] of WIN_LINES) if (board[a] && board[a] === board[b] && board[a] === board[c]) return board[a];
+function getWinningLine(board: Cell[]): { player: Player; cells: number[] } | null {
+  for (const [a,b,c] of WIN_LINES) {
+    if (board[a] && board[a] === board[b] && board[a] === board[c]) return { player: board[a], cells: [a,b,c] };
+  }
   return null;
+}
+function getWinner(board: Cell[]): Player | null {
+  return getWinningLine(board)?.player ?? null;
 }
 function available(board: Cell[]) { return board.map((cell, index) => cell === null ? index : -1).filter(index => index >= 0); }
 function minimax(board: Cell[], player: Player, depth: number): { score: number; move: number | null } {
@@ -56,7 +61,10 @@ export default function TicTacToe({ onBack }: { onBack: () => void }) {
   const [selected, setSelected] = useState<number | null>(null);
   const [moves, setMoves] = useState(0);
   const [message, setMessage] = useState("");
-  const winner = getWinner(board);
+  const winningLine = getWinningLine(board);
+  const winner = winningLine?.player ?? null;
+  const lineStart = winningLine ? { x: winningLine.cells[0] % 3 + 0.5, y: Math.floor(winningLine.cells[0] / 3) + 0.5 } : null;
+  const lineEnd = winningLine ? { x: winningLine.cells[2] % 3 + 0.5, y: Math.floor(winningLine.cells[2] / 3) + 0.5 } : null;
   const isComputerTurn = mode === "classic" && opponent === "computer" && turn === "O" && phase === "playing";
 
   const startGame = () => {
@@ -177,6 +185,11 @@ export default function TicTacToe({ onBack }: { onBack: () => void }) {
                   {!cell && <span className="ttt-cell-number">{index + 1}</span>}
                 </button>;
               })}
+              {phase === "finished" && winningLine && lineStart && lineEnd && (
+                <svg className={"ttt-winning-line winning-line-" + winningLine.player.toLowerCase()} viewBox="0 0 3 3" preserveAspectRatio="none" aria-hidden="true">
+                  <line x1={lineStart.x} y1={lineStart.y} x2={lineEnd.x} y2={lineEnd.y} />
+                </svg>
+              )}
             </div>
             {mode === "advanced" && phase === "playing" && <div className="ttt-advanced-status"><span>PLAYER X <b>{advancedPlaced.X}/3</b></span><span>PLAYER O <b>{advancedPlaced.O}/3</b></span><small>{selected !== null ? "Choose an empty square to move your marker." : "Select or drag one of your markers to an empty square."}</small></div>}
             {phase === "finished" ? <div className="ttt-result"><Trophy size={20}/><b>{message}</b><button className="primary-button" onClick={startGame}>PLAY AGAIN <RotateCcw size={14}/></button></div> :
