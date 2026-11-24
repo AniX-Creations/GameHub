@@ -53,7 +53,6 @@ export default function TicTacToe({ onBack }: { onBack: () => void }) {
   const [phase, setPhase] = useState<Phase>("setup");
   const [board, setBoard] = useState<Cell[]>(Array(9).fill(null));
   const [turn, setTurn] = useState<Player>("X");
-  const [firstPlayer, setFirstPlayer] = useState<Player>("X");
   const [selected, setSelected] = useState<number | null>(null);
   const [moves, setMoves] = useState(0);
   const [message, setMessage] = useState("");
@@ -62,7 +61,7 @@ export default function TicTacToe({ onBack }: { onBack: () => void }) {
 
   const startGame = () => {
     const first: Player = mode === "classic" && opponent === "computer" && Math.random() < 0.5 ? "O" : "X";
-    setBoard(Array(9).fill(null)); setTurn(first); setFirstPlayer(first); setSelected(null); setMoves(0); setMessage("");
+    setBoard(Array(9).fill(null)); setTurn(first); setSelected(null); setMoves(0); setMessage("");
     setPhase("playing");
   };
 
