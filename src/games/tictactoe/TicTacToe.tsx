@@ -98,7 +98,7 @@ export default function TicTacToe({ onBack }: { onBack: () => void }) {
   };
 
   const moveAdvanced = (from: number, to: number) => {
-    if (phase !== "playing" || board[to] || board[from] !== turn || from === to) return;
+    if (phase !== "playing" || board[to] || board[from] !== turn || from === to || advancedPlaced[turn] < 3) return;
     const next = [...board]; next[to] = turn; next[from] = null;
     setBoard(next); setMoves(value => value + 1); setSelected(null);
     setTurn(turn === "X" ? "O" : "X");
@@ -166,7 +166,7 @@ export default function TicTacToe({ onBack }: { onBack: () => void }) {
             <div className="ttt-board-heading"><div><span className={`status-dot ${phase === "finished" ? "over" : "playing"}`}/>{status}</div><span className="ttt-mode-label">{mode === "classic" ? "CLASSIC" : "ADVANCED"}</span></div>
             <div className="ttt-board" role="group" aria-label="Tic tac toe board">
               {board.map((cell, index) => {
-                const isMovable = mode === "advanced" && cell === turn && phase === "playing";
+                const isMovable = mode === "advanced" && cell === turn && phase === "playing" && advancedPlaced[turn] === 3;
                 const isDropTarget = mode === "advanced" && selected !== null && cell === null && phase === "playing";
                 return <button key={index} className={`ttt-cell ${cell ? `mark-${cell.toLowerCase()}` : ""} ${selected === index ? "selected" : ""} ${isDropTarget ? "drop-target" : ""}`} onClick={() => handleCell(index)} onDragOver={event => { if (mode === "advanced" && selected !== null) event.preventDefault(); }} onDrop={event => { event.preventDefault(); const from = Number(event.dataTransfer.getData("text/plain")); if (Number.isInteger(from)) moveAdvanced(from, index); }} onDragStart={event => { if (!isMovable) { event.preventDefault(); return; } event.dataTransfer.setData("text/plain", String(index)); setSelected(index); }} draggable={isMovable} aria-label={`Square ${index + 1}: ${cell ?? "empty"}`}>
                   {cell && <span className="ttt-mark">{cell}</span>}
