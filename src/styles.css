@@ -391,3 +391,13 @@ button.hub-game-card:hover{transform:translateY(-3px);border-color:var(--accent)
 @media(max-width:900px){.hub-game-grid-four{grid-template-columns:repeat(2,minmax(0,1fr))}.ttt-game-layout{grid-template-columns:minmax(0,1fr) 235px}}
 @media(max-width:680px){.ttt-hero{padding:30px 0 22px}.ttt-game-layout{grid-template-columns:1fr}.ttt-side-panel{min-height:260px}.ttt-reset{margin-top:22px}.ttt-options{grid-template-columns:1fr;gap:15px}.ttt-board-panel{padding:10px}.ttt-board{gap:6px}.ttt-cell{border-radius:7px}}
 @media(max-width:480px){.hub-game-grid-four{grid-template-columns:1fr}.ttt-setup{padding:14px}.ttt-mode-grid{grid-template-columns:1fr}.ttt-mode-card{min-height:145px}.ttt-levels{grid-template-columns:1fr}.ttt-levels button{flex-direction:row;align-items:center;justify-content:space-between}.ttt-choice-row{grid-template-columns:1fr}.ttt-result button{margin-left:0}}
+
+
+/* Animated winning path */
+.ttt-board{position:relative}
+.ttt-winning-line{position:absolute;z-index:5;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.ttt-winning-line line{fill:none;stroke:#f5d76e;stroke-width:.055;stroke-linecap:round;stroke-dasharray:4;stroke-dashoffset:4;animation:ttt-draw-winning-line .72s cubic-bezier(.2,.75,.25,1) forwards;filter:drop-shadow(0 0 5px rgba(245,215,110,.9)) drop-shadow(0 0 12px rgba(245,215,110,.55))}
+.ttt-winning-line.winning-line-x line{stroke:#a5f36a;filter:drop-shadow(0 0 5px rgba(165,243,106,.9)) drop-shadow(0 0 12px rgba(165,243,106,.55))}
+.ttt-winning-line.winning-line-o line{stroke:#8fd8ff;filter:drop-shadow(0 0 5px rgba(143,216,255,.9)) drop-shadow(0 0 12px rgba(143,216,255,.55))}
+@keyframes ttt-draw-winning-line{to{stroke-dashoffset:0}}
+@media(prefers-reduced-motion:reduce){.ttt-winning-line line{animation:none;stroke-dashoffset:0}}
