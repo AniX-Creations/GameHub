@@ -81,6 +81,15 @@ export default function App() {
               <span className="hub-card-link">EXPLORE SOLAR SYSTEM <ArrowRight size={15} /></span>
             </div>
           </button>
+          <button className="hub-game-card ttt-hub-card" onClick={() => setSelectedGame("tictactoe")}>
+            <div className="hub-card-art ttt-art"><div className="ttt-mini-board"><i>X</i><i>O</i><i></i><i></i><i>X</i><i></i><i>O</i><i></i><i>X</i></div></div>
+            <div className="hub-card-copy">
+              <span className="step-tag">GAME 04 · STRATEGY</span>
+              <h2>Tic Tac Toe</h2>
+              <p>Challenge the computer or a friend. Try the advanced three-marker mode.</p>
+              <span className="hub-card-link">PLAY TIC TAC TOE <ArrowRight size={15} /></span>
+            </div>
+          </button>
         </div>
       </section>
 
